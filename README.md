@@ -1,8 +1,27 @@
-# Can We Actually Earn Money from Gambling?
+Can We Actually Earn Money from Gambling?
+================
 
-![Asset illustration by [Afif Ramdhasuma](https://unsplash.com/@javaistan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/RjqCk9MqhNg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](asset/cover.jpg)
-
+![cover.jpg](asset/cover.jpg)
 Asset illustration by [Afif Ramdhasuma](https://unsplash.com/@javaistan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/RjqCk9MqhNg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
+# Table of Content
+- [The Quick Draw game](#the-quick-draw-game)
+- [Talking about probabilities](#talking-about-probabilities)
+  * [The definition](#the-definition)
+  * [Probability vs Possibility](#probability-vs-possibility)
+  * [The Hypergeometric distribution](#the-hypergeometric-distribution)
+- [Odds of winning](#odds-of-winning)
+  * [Chance to win](#chance-to-win)
+  * [Expected payoff](#expected-payoff)
+- [Analyzing historical data](#analyzing-historical-data)
+  * [Is this some kind of pattern?](#is-this-some-kind-of-pattern)
+    + [Overall distribution](#overall-distribution)
+    + [Time-based distribution](#time-based-distribution)
+- [Simulation, for real](#simulation-for-real)
+- [Conclusion](#conclusion)
+- [References](#references)
+
+---
 
 Gambling is a quick way to become rich, *they* said. Upon a peaceful night, one man can spend a hundred bucks and go home with a million, while another man can spend ten grand and earn nothing in return. Extremely high risk for a lump sum of money, yet lots of people can't live without it. But, can we actually earn money from gambling?
 
@@ -16,8 +35,7 @@ Probabilities… the ol’ enemy of my fellow colleagues back in the university.
 
 ## The definition
 
-> *For a given experiment, $S$ denotes the sample space and $A, A_1, A_2,...$ represent possible events. A set function that associates a real value $P(A)$ with each event $A$  is called a **probability set function,** and $P(A)$ is called the **probability $A$,** if $A_1, A_2,...$ are pairwise mutually exclusive events, and if the following properties are satisfied [2]:*
-> 
+> For a given experiment, $S$ denotes the sample space and $A, A_1, A_2,...$ represent possible events. A set function that associates a real value $P(A)$ with each event $A$  is called a **probability set function**, and $P(A)$ is called the **probability $A$**, if $A_1, A_2,...$ are pairwise mutually exclusive events, and if the following properties are satisfied [2]:
 
 $$
 \begin{align*} 
@@ -86,7 +104,7 @@ Table 2 shows the probability of winning any n-spot game. The event winning an n
 
 After you learnt how the “basic” probability of Quick Draw game works, you asked yourself, *“is there any way to calculate the expected payoff from dollar spent on each game?”*. The answer is obvious, yes it is! We can use the feature of probability distribution to calculate the expected value of the desired scenario.
 
-> *Let $Y$ be a discrete random variable of payoff from a Quick Draw game*
+> Let $Y$ be a discrete random variable of payoff from a Quick Draw game
 
 The expected payoff is equal to the expected value of $Y$, such as
 
@@ -97,7 +115,11 @@ $$
 For example, the expected payoff for 3-spot game is
 
 $$
-\begin{align*}\text{E}[\text{3-spot}] &= \$23\times P(Y=3)+\$2\times P(Y=2) \\ &=\$23(13.88\%)+\$2(1.39\%) \\ &= \$0.597 \end{align*}
+\begin{align}
+\text{E}[\text{3-spot}] &= \$23\times P(Y=3)+\$2\times P(Y=2) \\ 
+&= \$23(13.88\\%)+\$2(1.39\\%) \\ 
+&= \$0.597 
+\end{align}
 $$
 
 Yes, the expected payoff of a 3-spot game is less than $1, making every game is a money-wasting instead of money-gaining. Again, computing all available scenario (n-spot) with R Studio, we obtain
@@ -254,7 +276,7 @@ Here are the results.
 
 ![real-simulation.png](asset/real-simulation.png)
 
-Surprised? No? Yes? Using the kind-of-pattern from the hourly relative frequency view which has the highest deviation among the other approaches, the simulation results show that the expected payoff per 1$ is *still* less than 1$. Though the expected payoff is slightly larger than the theoretical value ($0.597 per 1$), the fact that we do not earn money remains true. So, the answer is for the previous question is **YES**, there is a **slight** change in our probability of winning, **BUT,** when it comes to the payoff, there is **NO** change in the fact that we are **expected to not earn money** by playing Quick Draw.
+Surprised? No? Yes? Using the kind-of-pattern from the hourly relative frequency view which has the highest deviation among the other approaches, the simulation results show that the expected payoff per $1 is *still* less than $1. Though the expected payoff is slightly larger than the theoretical value ($0.597 per $1), the fact that we do not earn money remains true. So, the answer is for the previous question is **YES**, there is a **slight** change in our probability of winning, **BUT,** when it comes to the payoff, there is **NO** change in the fact that we are **expected to not earn money** by playing Quick Draw.
 
 # Conclusion
 
